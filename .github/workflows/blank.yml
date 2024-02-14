@@ -22,5 +22,4 @@ jobs:
         git fetch origin
         git checkout staging
         git pull origin $br --rebase -X theirs
-        git commit -am "Automated commit from ${{ github.ref }} branch"
         git push origin staging
