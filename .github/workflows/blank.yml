@@ -1,5 +1,8 @@
 name: Push to Dynamic Branches
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
@@ -11,11 +14,13 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Push to Target Branch
       if: github.ref != 'refs/heads/staging'
       run: |
+        git config --global user.name 'kaydee0502'
+        git config --global user.email 'kshitijdhama513@gmail.com'
         br=$(git rev-parse --abbrev-ref HEAD)
         git config user.name "GitHub Actions"
         git config user.email "kshitijdhama513.gmail.com"
