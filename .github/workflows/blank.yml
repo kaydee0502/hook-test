@@ -9,6 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+
+
 
     steps:
     - name: Checkout code
@@ -17,10 +20,11 @@ jobs:
     - name: Push to Target Branch
       if: github.ref != 'refs/heads/staging'
       run: |
+        br=$(git rev-parse --abbrev-ref HEAD)
         git config user.name "GitHub Actions"
         git config user.email "kshitijdhama513.gmail.com"
         git fetch origin
         git checkout staging
-        git pull origin ${{ github.branch }}
+        git pull origin $br
         git commit -am "Automated commit from ${{ github.ref }} branch"
         git push origin staging
