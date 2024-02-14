@@ -27,5 +27,5 @@ jobs:
         git fetch origin
         git checkout staging
         git pull origin $br --rebase -X theirs
-        git pull origin staging
+        git pull origin staging --rebase -X ours
         git push origin staging
